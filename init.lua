@@ -657,5 +657,15 @@ cmp.setup {
   },
 }
 
+local pid = vim.fn.getpid()
+
+local omnisharp_bin = "/usr/local/bin/omnisharp-roslyn/OmniSharp"
+
+require'lspconfig'.omnisharp.setup{
+    cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) }
+    -- Additional configuration can be added here
+}
+
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
