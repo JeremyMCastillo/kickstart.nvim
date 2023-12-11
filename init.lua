@@ -659,11 +659,13 @@ cmp.setup {
 
 local pid = vim.fn.getpid()
 
-local omnisharp_bin = "/usr/local/bin/omnisharp-roslyn/OmniSharp"
+local omnisharp_bin = "/root/run"
 
 require'lspconfig'.omnisharp.setup{
-    cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) }
+    cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) },
     -- Additional configuration can be added here
+    on_attach = on_attach,
+    capabilities = capabilities
 }
 
 
